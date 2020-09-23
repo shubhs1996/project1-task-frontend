@@ -18,7 +18,7 @@ export const authenticate = (user, token, err) => {
 export const login = (credential) => {
   return async dispatch => {
 
-    const response = await fetch('http://localhost:8000/users/login',
+    const response = await fetch('https://project-task-backend.herokuapp.com/users/login',
       {
         method: 'POST',
         headers: {
@@ -73,7 +73,7 @@ export const logout = () => {
 export const signUp = (inputs) => {
  return async dispatch=> {
 
-  const response = await fetch('http://localhost:8000/users/signup',{
+  const response = await fetch('https://project-task-backend.herokuapp.com/users/signup',{
     method: 'POST',
         headers: {
           'Content-Type': 'application/json'

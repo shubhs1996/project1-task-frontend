@@ -12,7 +12,7 @@ export const loadCourse = () => {
 
         try {
 
-            const response = await fetch('http://localhost:8000/course/')
+            const response = await fetch('https://project-task-backend.herokuapp.com/course/')
             const resData = await response.json()
 
             if (resData.message) {
@@ -59,7 +59,7 @@ export const clearMsg = () => {
 export const DeleteCourse = (id) => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/course/${id}`, {
+            const response = await fetch(`https://project-task-backend.herokuapp.com/course/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-type': 'application/json'
@@ -88,7 +88,7 @@ export const editCourse = (inputs, id) => {
 
         console.log(inputs)
         try {
-            const response = await fetch(`http://localhost:8000/course/${id}`,
+            const response = await fetch(`https://project-task-backend.herokuapp.com/course/${id}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -125,7 +125,7 @@ export const createCourse = (inputs) => {
         const parsedUser = JSON.parse(userData)
 
         try {
-            const response = await fetch('http://localhost:8000/course/addCourse', {
+            const response = await fetch('https://project-task-backend.herokuapp.com/course/addCourse', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
