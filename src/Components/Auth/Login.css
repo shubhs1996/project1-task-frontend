@@ -1,0 +1,16 @@
+.login-container {
+    
+    padding:1vw;
+}
+
+.validateClass {
+    color:red
+}
+
+.success-msg {
+    width:50%;
+    margin:auto;
+    background-color: green;
+    color:white;
+    font-size: medium;
+}

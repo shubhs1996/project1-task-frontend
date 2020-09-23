@@ -1,0 +1,13 @@
+.signup-container {
+    
+    padding:1vw;
+   
+}
+
+.success-msg {
+    width:50%;
+    background-color: rgb(54, 167, 54);
+    color:white;
+    font-size: 1vw;
+    text-align: center;
+}
