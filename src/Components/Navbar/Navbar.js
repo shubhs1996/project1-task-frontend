@@ -168,7 +168,7 @@ export default function PrimarySearchAppBar(props) {
         {props.userName}
       </Typography>
       <Typography className={classes.title} variant="h6" noWrap>
-      <button onClick={onLogout}>Logout</button>
+      <button onClick={props.onLogout}>Logout</button>
     </Typography>
             <IconButton
               edge="end"
