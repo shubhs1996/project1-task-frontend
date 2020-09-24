@@ -6,9 +6,9 @@ import { connect } from 'react-redux'
 import { createCourse, editCourse } from '../../store/actions/course'
 
 //css
-import './AddOrEdit.css'
+import './AddandEdit.css'
 
-export class AddOrEdit extends Component {
+export class Edit extends Component {
 
   constructor(props) {
     super(props);
@@ -16,11 +16,11 @@ export class AddOrEdit extends Component {
     //checking for id of couse to edit
     this.id = localStorage.getItem('courseId');
     this.state = {
-      title: this.id ? this.props.course[0].title : '',
-      detail: this.id ? this.props.course[0].detail : '',
-      price: this.id ? this.props.course[0].price : '',
-      duration: this.id ? this.props.course[0].duration : ''
-    }
+      title:  this.props.course[0].title,
+      detail: this.props.course[0].detail,
+      price:this.props.course[0].price,
+      duration:this.props.course[0].duration 
+       }
 
   }
 
@@ -30,13 +30,8 @@ export class AddOrEdit extends Component {
     e.preventDefault()
     if (this.validator.allValid()) {
 
-      if (this.id) {
         //dispatch for editing
-        this.props.UpdateCourse(this.state, this.id)
-      } else {
-        // dispatch for creating
-        this.props.CreateCourse(this.state)
-      }
+      this.props.UpdateCourse(this.state,this.id)
       localStorage.removeItem('courseId')
       //closing model
       this.props.handleClose();
@@ -59,6 +54,8 @@ export class AddOrEdit extends Component {
 
 
   render() {
+
+console.log(localStorage.getItem('courseId'))
 
     return (
       <div className="modal_container">
@@ -106,7 +103,6 @@ export class AddOrEdit extends Component {
 //mapping redux state to props of class component
 const mapStateToProps = (state) => {
   const courseId = localStorage.getItem('courseId')
-
   if (courseId) {
     const courses = state.Course.courses
     const matchedCourse = courses.filter(course => course.id === courseId)
@@ -126,4 +122,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddOrEdit)
+export default connect(mapStateToProps, mapDispatchToProps)(Edit)

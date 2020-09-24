@@ -6,7 +6,8 @@ import Modal from '@material-ui/core/Modal'
 import { Redirect } from 'react-router-dom'
 
 import Navbar from '../Components/Navbar/Navbar'
-import AddWord from '../Components/AddOrEditCouse/AddOrEdit'
+import Edit from '../Components/AddOrEditCouse/Edit'
+import Add from '../Components/AddOrEditCouse/Add'
 import ItemList from '../Components/Card.js/ItemList'
 import { loadCourse, clearMsg, DeleteCourse } from '../store/actions/course'
 import { logout } from '../store/actions/auth'
@@ -52,9 +53,9 @@ function HomePage() {
 
 
     //loading courses
-    useEffect(() => {
-        dispatch(loadCourse())
-    }, [courseDlt, show])
+  useEffect(()=>{
+      dispatch(loadCourse())
+  },courseDlt,show)
 
 
 
@@ -106,7 +107,7 @@ function HomePage() {
                     <ItemList onDelete={() => onDeleteHandler(course.id)} uid={parsedUser[0]._id} id={course.id} title={course.title} detail={course.detail} duration={course.duration} price={course.price} createdBy={course.creator} handleShow={handleShow}/>
                 ) : <div>No Course Available Please add some</div>}
             </div>
-            <IoIosAddCircle className="add-icon" size={70} color='rgb(114, 9, 44)' onClick={() => handleShow('Add New',null)} />
+            <IoIosAddCircle className="add-icon" size={70} color='rgb(114, 9, 44)' onClick={() => handleShow('Add New',false)} />
 
             <Modal
                 open={show}
@@ -114,7 +115,8 @@ function HomePage() {
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
             >
-                <AddWord handleClose={handleClose} title={title} />
+
+            {title==='Edit Course'? <Edit handleClose={handleClose} title={title} />: <Add handleClose={handleClose} title={title} />}   
             </Modal>
         </div>
     )
